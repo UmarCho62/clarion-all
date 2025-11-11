@@ -803,70 +803,270 @@ def show_dashboard(leads_df):
             <p>Manage your 100+ pet e-commerce prospects</p>
         </div>
     """, unsafe_allow_html=True)
-    
+
     # Filters
     col1, col2, col3 = st.columns(3)
-    
+
     with col1:
         business_types = ["All"] + sorted(leads_df['Business Type'].unique().tolist())
         selected_type = st.selectbox("Filter by Business Type", business_types)
-    
+
     with col2:
         status_options = ["All", "Not Contacted", "Contacted", "Replied", "Meeting Scheduled", "Proposal Sent", "Closed Won", "Closed Lost"]
         selected_status = st.selectbox("Filter by Status", status_options)
-    
+
     with col3:
         search_term = st.text_input("🔍 Search Company", "")
-    
+
     # Apply filters
     filtered_df = leads_df.copy()
     if selected_type != "All":
         filtered_df = filtered_df[filtered_df['Business Type'] == selected_type]
     if search_term:
         filtered_df = filtered_df[filtered_df['Company Name'].str.contains(search_term, case=False, na=False)]
-    
+
     # Add status column from session state
     filtered_df['Status'] = filtered_df['Company Name'].apply(
         lambda x: st.session_state.status_data.get(x, {}).get('status', 'Not Contacted')
     )
-    
+
     if selected_status != "All":
         filtered_df = filtered_df[filtered_df['Status'] == selected_status]
-    
+
     # Summary metrics
     st.subheader("📈 Summary")
-    col1, col2, col3, col4 = st.columns(4)
-    
+    col1, col2, col3, col4, col5, col6, col7, col8 = st.columns(8)
+
     total_leads = len(filtered_df)
     contacted = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('status') in ['Contacted', 'Replied', 'Meeting Scheduled', 'Proposal Sent', 'Closed Won']])
     meetings = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('status') in ['Meeting Scheduled', 'Proposal Sent', 'Closed Won']])
     closed = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('status') == 'Closed Won'])
-    
-    col1.metric("Total Leads", total_leads)
+    initial_sent = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('initial_message_sent', False)])
+    followup_sent = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('followup_sent', False)])
+    email_contacted = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('email_contacted', False)])
+    linkedin_contacted = len([x for x in filtered_df['Company Name'] if st.session_state.status_data.get(x, {}).get('linkedin_contacted', False)])
+
+    col1.metric("Total", total_leads)
     col2.metric("Contacted", contacted)
-    col3.metric("Meetings", meetings)
-    col4.metric("Closed Won", closed)
-    
-    # Display leads table
+    col3.metric("Initial", initial_sent)
+    col4.metric("Follow-ups", followup_sent)
+    col5.metric("📧 Email", email_contacted)
+    col6.metric("💼 LinkedIn", linkedin_contacted)
+    col7.metric("Meetings", meetings)
+    col8.metric("Won", closed)
+
+    # Display leads table with interactive checkboxes
     st.subheader("🎯 Leads")
-    
-    # Select columns to display
-    display_cols = ['#', 'Company Name', 'Website', 'Business Type', 'Primary Contact Role', 'Status']
-    display_df = filtered_df[display_cols].copy()
-    
-    st.dataframe(
-        display_df,
-        use_container_width=True,
-        hide_index=True,
-        height=600
-    )
-    
-    # Quick actions
+    st.write("*Use checkboxes to track outreach progress and click 'Generate Email' for quick message creation*")
+
+    # Display each lead with checkboxes and actions
+    for idx, row in filtered_df.iterrows():
+        company_name = row['Company Name']
+
+        # Get current checkbox states
+        current_data = st.session_state.status_data.get(company_name, {})
+        initial_sent = current_data.get('initial_message_sent', False)
+        followup_sent = current_data.get('followup_sent', False)
+        linkedin_url = row.get('Primary Contact LinkedIn', '')
+
+        # Create expander for each lead
+        with st.expander(f"**#{row['#']}** - {company_name} ({row['Business Type']}) - Status: {row['Status']}"):
+            col1, col2 = st.columns([2, 1])
+
+            with col1:
+                st.write(f"**Website:** [{row['Website']}](https://{row['Website']})")
+                st.write(f"**Primary Contact:** {row['Primary Contact Role']}")
+                st.write(f"**Business Type:** {row['Business Type']}")
+                if linkedin_url:
+                    st.write(f"**LinkedIn:** [View Profile]({linkedin_url})")
+
+            with col2:
+                # Checkboxes for workflow tracking
+                new_initial = st.checkbox(
+                    "✉️ Initial Message Sent",
+                    value=initial_sent,
+                    key=f"initial_{company_name}"
+                )
+                new_followup = st.checkbox(
+                    "📨 Follow-up Sent",
+                    value=followup_sent,
+                    key=f"followup_{company_name}"
+                )
+
+                # Get additional tracking states
+                email_contacted = current_data.get('email_contacted', False)
+                linkedin_contacted = current_data.get('linkedin_contacted', False)
+
+                new_email = st.checkbox(
+                    "📧 Contacted via Email",
+                    value=email_contacted,
+                    key=f"email_{company_name}"
+                )
+                new_linkedin = st.checkbox(
+                    "💼 Contacted via LinkedIn",
+                    value=linkedin_contacted,
+                    key=f"linkedin_{company_name}"
+                )
+
+            # Update status if checkboxes changed
+            if new_initial != initial_sent or new_followup != followup_sent or new_email != email_contacted or new_linkedin != linkedin_contacted:
+                if company_name not in st.session_state.status_data:
+                    st.session_state.status_data[company_name] = {}
+                st.session_state.status_data[company_name]['initial_message_sent'] = new_initial
+                st.session_state.status_data[company_name]['followup_sent'] = new_followup
+                st.session_state.status_data[company_name]['email_contacted'] = new_email
+                st.session_state.status_data[company_name]['linkedin_contacted'] = new_linkedin
+                save_status(st.session_state.status_data)
+
+            # Message Templates - Always visible
+            if True:
+                st.markdown("---")
+                st.markdown("### 📧 Message Templates")
+
+                # Determine specific feature
+                specific_features = {
+                    'Subscription Service': "subscription signup flow",
+                    'Online Pharmacy': "prescription management system",
+                    'Pet Insurance': "policy comparison and claims portal",
+                    'Specialty': "product filtering and checkout",
+                    'Retailer': "product search and filtering",
+                    'Marketplace': "booking and payment flow"
+                }
+                specific_feature = "website"
+                for key, value in specific_features.items():
+                    if key.lower() in row['Business Type'].lower():
+                        specific_feature = value
+                        break
+
+                # Create two columns for both templates
+                col_email, col_linkedin = st.columns([1.2, 1])
+
+                # LEFT COLUMN: DETAILED EMAIL
+                with col_email:
+                    st.markdown("#### 📧 Detailed Email")
+
+                    subject_line = f"ADA Compliance for {company_name} - Mitigating Risk"
+
+                    email_body = f"""Hi [First Name],
+
+I noticed {company_name}'s impressive presence in the {row['Business Type'].lower()} space. I wanted to reach out regarding a critical compliance issue affecting many pet e-commerce companies.
+
+**The Challenge:**
+Your {specific_feature} may have accessibility barriers that violate ADA Title III. With pet industry lawsuits increasing 320% since 2020, companies like {company_name} are prime targets.
+
+**What We've Seen:**
+• {row['Key Pain Points']}
+• Risk of lawsuits ($20K-$75K+ in settlements)
+• Potential brand damage and customer loss
+
+**Our Solution:**
+We provide comprehensive ADA compliance audits and remediation for pet e-commerce platforms. We've helped companies like yours:
+✓ Achieve WCAG 2.1 AA compliance
+✓ Protect against lawsuits
+✓ Expand market reach by 15-20%
+✓ Improve SEO and user experience
+
+**Next Steps:**
+I'd love to offer a complimentary accessibility audit of your {specific_feature}. This 30-minute assessment will identify specific risks and provide actionable recommendations.
+
+Are you available for a brief call next week?
+
+Best regards,
+[Your Name]
+ADA Compliance Specialist
+[Your Email] | [Your Phone]
+
+P.S. We work with 50+ pet brands and understand the unique challenges in your industry."""
+
+                    st.markdown("**📬 Subject:**")
+                    st.info(subject_line)
+
+                    st.markdown("**📄 Body:**")
+                    email_final = st.text_area(
+                        "Edit as needed:",
+                        value=email_body,
+                        height=350,
+                        key=f"email_body_{company_name}",
+                        label_visibility="collapsed"
+                    )
+
+                    # Email action buttons
+                    email_btn1, email_btn2 = st.columns(2)
+                    with email_btn1:
+                        if st.button("📋 Copy Email", key=f"copy_email_{company_name}", use_container_width=True):
+                            st.code(email_final, language=None)
+                            st.success("✅ Copy text above!")
+                    with email_btn2:
+                        if st.button("✅ Mark Email Sent", key=f"mark_email_{company_name}", use_container_width=True):
+                            if company_name not in st.session_state.status_data:
+                                st.session_state.status_data[company_name] = {}
+                            st.session_state.status_data[company_name]['status'] = 'Contacted'
+                            st.session_state.status_data[company_name]['last_contact'] = datetime.now().strftime('%Y-%m-%d')
+                            st.session_state.status_data[company_name]['initial_message_sent'] = True
+                            st.session_state.status_data[company_name]['email_contacted'] = True
+                            save_status(st.session_state.status_data)
+                            st.success("✅ Updated!")
+                            st.rerun()
+
+                # RIGHT COLUMN: LINKEDIN MESSAGE
+                with col_linkedin:
+                    st.markdown("#### 💼 LinkedIn Message")
+
+                    contact_role = row['Primary Contact Role']
+                    # Shorten role if too long
+                    if len(contact_role) > 25:
+                        role_display = contact_role.split()[0]
+                    else:
+                        role_display = contact_role
+
+                    linkedin_msg = f"Hi [Name], congrats on {role_display} at {company_name}! Have you chosen an accessibility provider? We're a VC-backed startup achieving 100% ADA compliance fast & maintaining it forever. Quick chat?"
+
+                    char_count = len(linkedin_msg)
+
+                    if char_count > 300:
+                        st.warning(f"⚠️ {char_count}/300 chars")
+                    else:
+                        st.success(f"✅ {char_count}/300 chars")
+
+                    linkedin_final = st.text_area(
+                        "Edit (replace [Name]):",
+                        value=linkedin_msg,
+                        height=150,
+                        key=f"linkedin_body_{company_name}",
+                        max_chars=300
+                    )
+
+                    # LinkedIn action buttons
+                    li_btn1, li_btn2 = st.columns(2)
+                    with li_btn1:
+                        if st.button("📋 Copy LinkedIn", key=f"copy_li_{company_name}", use_container_width=True):
+                            st.code(linkedin_final, language=None)
+                            st.success("✅ Copy text above!")
+                    with li_btn2:
+                        if st.button("✅ Mark LI Sent", key=f"mark_li_{company_name}", use_container_width=True):
+                            if company_name not in st.session_state.status_data:
+                                st.session_state.status_data[company_name] = {}
+                            st.session_state.status_data[company_name]['status'] = 'Contacted'
+                            st.session_state.status_data[company_name]['last_contact'] = datetime.now().strftime('%Y-%m-%d')
+                            st.session_state.status_data[company_name]['initial_message_sent'] = True
+                            st.session_state.status_data[company_name]['linkedin_contacted'] = True
+                            save_status(st.session_state.status_data)
+                            st.success("✅ Updated!")
+                            st.rerun()
+
+                    if linkedin_url:
+                        st.markdown("---")
+                        if st.button("🔗 Open LinkedIn Profile", key=f"open_linkedin_{company_name}", use_container_width=True, type="secondary"):
+                            st.markdown(f"[Click here to open]({linkedin_url})")
+                            st.info("👆 Click the link above")
+
+    # Quick actions section (keeping for backward compatibility)
+    st.markdown("---")
     st.subheader("⚡ Quick Actions")
     selected_company = st.selectbox("Select a company for quick action", filtered_df['Company Name'].tolist())
-    
+
     col1, col2, col3 = st.columns(3)
-    if col1.button("📧 Generate Email"):
+    if col1.button("📧 Generate Email", key="quick_email"):
         st.session_state.selected_company = selected_company
         st.session_state.page = "✉️ Email Generator"
         st.rerun()
@@ -891,16 +1091,16 @@ def show_lead_details(leads_df):
     
     # Company selection
     if 'selected_company' in st.session_state:
-        default_idx = leads_df[leads_df['Company Name'] == st.session_state.selected_company].index[0]
+        default_idx = int(leads_df[leads_df['Company Name'] == st.session_state.selected_company].index[0])
     else:
         default_idx = 0
-    
+
     selected_company = st.selectbox(
         "Select Company",
         leads_df['Company Name'].tolist(),
         index=default_idx
     )
-    
+
     # Get company data
     company_data = leads_df[leads_df['Company Name'] == selected_company].iloc[0]
     
@@ -992,18 +1192,18 @@ def show_email_generator(leads_df):
     
     # Company selection
     if 'selected_company' in st.session_state:
-        default_idx = leads_df[leads_df['Company Name'] == st.session_state.selected_company].index[0]
+        default_idx = int(leads_df[leads_df['Company Name'] == st.session_state.selected_company].index[0])
     else:
         default_idx = 0
-    
+
     selected_company = st.selectbox(
         "Select Company",
         leads_df['Company Name'].tolist(),
         index=default_idx
     )
-    
+
     company_data = leads_df[leads_df['Company Name'] == selected_company].iloc[0]
-    
+
     # Template selection
     st.subheader("📝 Select Email Template")
     
@@ -1028,21 +1228,25 @@ def show_email_generator(leads_df):
         your_title = st.text_input("Your Title", "")
     
     # Generate subject lines
-    st.subheader("📬 Subject Lines")
-    
+    st.markdown("---")
+    st.subheader("📬 Subject Line Options")
+    st.write("*Choose one of these subject lines for your email:*")
+
     subject_lines = [
         subj.format(
             company=company_data['Company Name'],
             business_type=company_data['Business Type'].lower()
-        ) 
+        )
         for subj in template['subject_lines']
     ]
-    
+
     for i, subject in enumerate(subject_lines, 1):
-        st.text(f"{i}. {subject}")
-    
+        st.info(f"**Option {i}:** {subject}")
+
     # Generate email body
-    st.subheader("📄 Email Body")
+    st.markdown("---")
+    st.subheader("📄 Generated Email Message")
+    st.write("*Edit the email below as needed, then copy it:*")
     
     # Determine specific feature based on business type
     specific_features = {
@@ -1073,29 +1277,44 @@ def show_email_generator(leads_df):
     email_body = email_body.replace("[Your Name]", your_name if your_name else "[Your Name]")
     email_body = email_body.replace("[Your Title]", your_title if your_title else "[Your Title]")
     
-    # Editable text area
+    # Editable text area with prominent display
     final_email = st.text_area(
-        "Email Content (editable)",
+        "✍️ Your Email (Edit as needed):",
         value=email_body,
-        height=400
+        height=400,
+        help="This is your generated email. You can edit it directly in this box."
     )
-    
-    # Copy to clipboard button
-    col1, col2 = st.columns(2)
-    
+
+    # Action buttons
+    st.markdown("---")
+    st.subheader("⚡ Actions")
+
+    col1, col2, col3 = st.columns(3)
+
     with col1:
-        if st.button("📋 Copy to Clipboard", type="primary"):
-            st.code(final_email, language=None)
-            st.success("✅ Email ready to copy!")
-    
+        if st.button("📋 Copy Email", type="primary", use_container_width=True):
+            st.success("✅ Email is ready to copy from the box above!")
+            st.info("💡 **Tip:** Select all text in the email box above and press Ctrl+C (or Cmd+C on Mac)")
+
     with col2:
-        if st.button("💾 Save as Contacted"):
+        if st.button("💾 Mark as Contacted", use_container_width=True):
             if selected_company not in st.session_state.status_data:
                 st.session_state.status_data[selected_company] = {}
             st.session_state.status_data[selected_company]['status'] = 'Contacted'
             st.session_state.status_data[selected_company]['last_contact'] = datetime.now().strftime('%Y-%m-%d')
+            st.session_state.status_data[selected_company]['initial_message_sent'] = True
             save_status(st.session_state.status_data)
             st.success("✅ Status updated to Contacted!")
+
+    with col3:
+        if st.button("🔄 Start Over", use_container_width=True):
+            st.rerun()
+
+    # Display final email in a code block for easy copying
+    st.markdown("---")
+    st.subheader("📋 Copy-Ready Format")
+    st.code(final_email, language=None)
+    st.caption("👆 Click the copy icon in the top-right of the box above to copy the entire email")
 
 def show_talking_points():
     """Display messaging frameworks and talking points"""

@@ -1,0 +1,703 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.103.168.164:8501
+  External URL: http://162.205.132.11:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+2025-11-11 15:17:01.391 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1627, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:17:53.735 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1627, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:17:57.093 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1627, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:18:00.681 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1627, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:22:29.080 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1627, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:25:39.059 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1661, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:25:42.982 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1661, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:25:48.276 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1661, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 881, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:34:28.443 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1699, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:34:31.351 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1699, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:34:35.102 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1699, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:34:38.277 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1699, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:34:39.796 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1699, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:35:11.889 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1699, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:37:17.470 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1706, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+2025-11-11 15:37:30.464 Uncaught app execution
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 1706, in <module>
+    main()
+    ~~~~^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 785, in main
+    show_dashboard(leads_df)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/umar/PycharmProjects/Clarion-all/sales_navigator_app.py", line 885, in show_dashboard
+    new_initial = st.checkbox(
+        "✉️ Initial Message Sent",
+        value=initial_sent,
+        key=f"initial_{company_name}"
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/runtime/metrics_util.py", line 447, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 175, in checkbox
+    return self._checkbox(
+           ~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<10 lines>...
+        width=width,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/widgets/checkbox.py", line 342, in _checkbox
+    element_id = compute_and_register_element_id(
+        "toggle" if type == CheckboxProto.StyleType.TOGGLE else "checkbox",
+    ...<6 lines>...
+        width=width,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 265, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/streamlit/elements/lib/utils.py", line 145, in _register_element_id
+    raise StreamlitDuplicateElementKey(user_key)
+streamlit.errors.StreamlitDuplicateElementKey: There are multiple elements with the same `key='initial_BarkBox'`. To fix this, please make sure that the `key` argument is unique for each element you create.
